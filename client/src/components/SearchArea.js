@@ -8,12 +8,14 @@ export default function SearchArea() {
 
   const [ticketList, setTicketList] = useState([]);
   const [hideCounter, setHideCounter] = useState(0);
+  const [restoredList, setRestoredList] = useState([]);
   
   useEffect(() => {
     async function fetchData() {
       try {
         const requestList = await axios.get('/api/tickets');
         await setTicketList(requestList.data);
+        setRestoredList(requestList.data.slice());
       } catch (e) {
         console.log(e);
       }
@@ -34,14 +36,13 @@ export default function SearchArea() {
   function hideTicket(title) {
     const index = ticketList.findIndex((ticket) => ticket.title === title);
     ticketList[index].hidden = true;
-    const visableTickets = ticketList.filter((ticket) => ticket.hidden === false);
+    const visableTickets = ticketList.filter((ticket) => ticket.hidden !== true);
     setTicketList(visableTickets);
     setHideCounter(hideCounter + 1);
   }
 
   function restoreHidden() {
-    ticketList.forEach((ticket) => ticket.hidden = false);
-    setTicketList(ticketList.slice());
+    setTicketList(restoredList);
     setHideCounter(0);
   }
 
