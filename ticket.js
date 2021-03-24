@@ -10,6 +10,7 @@ const ticketSchema = new mongoose.Schema({
   done: {type: Boolean, required: true},
   creationTime: {type: Date, required: true},
   labels: {type: Array, required: true},
+  hidden: {type: Boolean, default: false}
 });
 
 

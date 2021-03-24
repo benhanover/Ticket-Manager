@@ -13,7 +13,7 @@ export default function SearchArea() {
     async function fetchData() {
       try {
         const requestList = await axios.get('/api/tickets');
-        setTicketList(requestList.data);
+        await setTicketList(requestList.data);
       } catch (e) {
         console.log(e);
       }
@@ -34,8 +34,9 @@ export default function SearchArea() {
   function hideTicket(title) {
     const index = ticketList.findIndex((ticket) => ticket.title === title);
     ticketList[index].hidden = true;
-    setTicketList(ticketList.slice());
-    setHideCounter(ticketList.filter((ticket) => ticket.hidden).length);
+    const visableTickets = ticketList.filter((ticket) => ticket.hidden === false);
+    setTicketList(visableTickets);
+    setHideCounter(hideCounter + 1);
   }
 
   function restoreHidden() {
