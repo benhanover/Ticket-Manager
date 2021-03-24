@@ -2,15 +2,21 @@ import React from 'react';
 import Ticket from './Ticket'
 import '../styles/ticketList.css';
 
-export default function TicketList( {ticketList} ) {
-  console.log(ticketList);
+function formatDate(date) {
+  return new Date(date).toISOString().slice(0, 19).replace("T", " ");
+}
+
+export default function TicketList( {ticketList, hideFunction} ) {
   const ticketElementList = ticketList.map((ticket, index) => {
-    return(
-    <li>
-      <Ticket key={index} title={ticket.title} content={ticket.content} email={ticket.userEmail} done={ticket.done} creationTime={ticket.creationTime} labels={ticket.labels} />
-    </li>
-    );
-  })
+    if(!ticket.hidden) {
+      return(
+      <li>
+        <Ticket key={index} title={ticket.title} content={ticket.content} email={ticket.userEmail} done={ticket.done} creationTime={formatDate(ticket.creationTime)} labels={ticket.labels} hideFunction={hideFunction} />
+      </li>
+      );
+    }
+  });
+  console.log(ticketElementList);
   return (
     <div>
       <ul>

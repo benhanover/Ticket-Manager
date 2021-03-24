@@ -6,22 +6,42 @@ import TicketList from './TicketList';
 
 export default function SearchArea() {
 
-  const [inputStr, setInputStr] = useState('');
   const [ticketList, setTicketList] = useState([]);
+  const [hideCounter, setHideCounter] = useState(0);
   
   useEffect(() => {
     async function fetchData() {
-      const requestList = await axios.get('http://localhost:8080/api/tickets');
-      setTicketList(requestList.data);
+      try {
+        const requestList = await axios.get('/api/tickets');
+        setTicketList(requestList.data);
+      } catch (e) {
+        console.log(e);
+      }
     }
     fetchData();
   }, []); 
 
 
-  const changeInputStr = async (e) => {
-    setInputStr(e.target.value);
-    const requestList = await axios.get(`http://localhost:8080/api/tickets?searchText=${e.target.value}`);
-    setTicketList(requestList.data);
+  const filterTicketList = async (e) => {
+    try {
+      const requestList = await axios.get(`/api/tickets?searchText=${e.target.value}`);
+      setTicketList(requestList.data);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  function hideTicket(title) {
+    const index = ticketList.findIndex((ticket) => ticket.title === title);
+    ticketList[index].hidden = true;
+    setTicketList(ticketList.slice());
+    setHideCounter(ticketList.filter((ticket) => ticket.hidden).length);
+  }
+
+  function restoreHidden() {
+    ticketList.forEach((ticket) => ticket.hidden = false);
+    setTicketList(ticketList.slice());
+    setHideCounter(0);
   }
 
 
@@ -29,9 +49,11 @@ export default function SearchArea() {
     <>
     <div className={'search-container'}>
       <h1 className={'search-title'}>Look for a ticket</h1>
-      <input className={'search-input'} placeholder={'Look for a ticket :)'} onChange={changeInputStr}/>
+      <input className={'search-input'} placeholder={'Look for a ticket :)'} onChange={filterTicketList} id={'searchInput'} />
     </div>
-    <TicketList ticketList={ticketList}/>
+    <p id={'hideTicketsCounter'}>{hideCounter}</p>
+    <button id={'restoreHideTickets'} onClick={restoreHidden}>restore</button>
+    <TicketList ticketList={ticketList} hideFunction={hideTicket} />
     </>
   );
 }
