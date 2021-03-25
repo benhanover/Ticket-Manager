@@ -8,7 +8,6 @@ export default function Ticket ( {title, content, email, done, creationTime, lab
       const color = colors[Math.floor(Math.random() * colors.length)];
       const index = colors.findIndex(colorInTheList => colorInTheList === color);
       colors.splice(index, 1);
-      console.log(color);
       return color;
     }
     const labelsList = {};
@@ -17,12 +16,12 @@ export default function Ticket ( {title, content, email, done, creationTime, lab
 
     let labelsElements = [];
     if (labels) {
-       labelsElements = labels.map((label) => {
+       labelsElements = labels.map((label, index) => {
         if(!labelsList[label]) {
           labelsList[label] = getRandomLabelColor();
         } 
 
-        return <p className={'label'} style={{backgroundColor: labelsList[label]}}>{label}</p>
+        return <p key={index} className={'label'} style={{backgroundColor: labelsList[label]}}>{label}</p>
       });
     } 
 

@@ -11,7 +11,7 @@ export default function TicketList( {ticketList, hideFunction} ) {
 
   const ticketElementList = ticketList.map((ticket, index) => {
       return(
-      <li className={'ticket'}>
+      <li key={index} className={'ticket'}>
         <Ticket key={index} title={ticket.title} content={ticket.content} email={ticket.userEmail} done={ticket.done} creationTime={formatDate(ticket.creationTime)} labels={ticket.labels} hideFunction={hideFunction} />
       </li>
       );
