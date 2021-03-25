@@ -1,8 +1,7 @@
 import React from "react";
 import '../styles/ticket.css';
 
-export default function Ticket ( {title, content, userEmail, done, creationTime, labels, hidden, hideFunction} ) {
-    
+export default function Ticket ( {title, content, email, done, creationTime, labels, hideFunction} ) {
     let labelsElements = [];
     if (labels) {
        labelsElements = labels.map((label) => {
@@ -11,14 +10,20 @@ export default function Ticket ( {title, content, userEmail, done, creationTime,
     } 
   
   return (
-    <div className={'ticket'}>
-      <h3 className={'ticket-title'}>{title}</h3>
-      <p className={'ticket-content'}>{content}</p>
-      <p className={'ticket-user-email'}>{userEmail}</p>
-      <p className={'ticket-done'}>{done}</p>
-      <p className={'ticket-creation-time'}>{creationTime}</p>
-      {labelsElements}
-      <button className={'hideTicketButton'} onClick={() => hideFunction(title)}>hide</button>
+    <div className={'ticket-div'}>
+      <div className={'ticket'}>
+        <h2 className={'ticket-title'}>{title}</h2>
+        <p className={'ticket-content'}>{content}</p>
+        <div className={'email-date-div'}>
+          <p className={'ticket-user-email'}>by {email}</p>
+          <p className={'ticket-done'}>{done}</p>
+          <p className={'ticket-creation-time'}>{creationTime}</p>
+        </div>
+        <div className={'labels'}>
+          {labelsElements}  
+        </div>
+        <button className={'hideTicketButton'} onClick={() => hideFunction(title)}>hide</button>
+      </div>
     </div>
   );
 }

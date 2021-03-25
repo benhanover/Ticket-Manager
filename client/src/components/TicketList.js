@@ -19,19 +19,28 @@ export default function TicketList( {ticketList, hideFunction} ) {
    
   const [startSlice, setStartSlice] = useState(0);
   const [endSlice, setEndSlice] = useState(6);
-  const nextButton = document.getElementById('next-button');
-  const prevButton = document.getElementById('prev-button');
+  const [nextHidden, setNextHidden] = useState(false);
+  const [prevHidden, setPrevHidden] = useState(true);
+
 
   function nextPage() {
+    console.log(startSlice);
     if (startSlice <= 6) {
-      prevButton.hidden = false;
+      setPrevHidden(false);
     } 
+    if (startSlice >= ticketElementList.length - 10) {
+      setNextHidden(true);
+    }
     setStartSlice(startSlice + 6);
     setEndSlice(endSlice + 6);
   }
   function prevPage() {
+    console.log(startSlice);
     if (startSlice <= 6) {
-      prevButton.hidden = true;
+      setPrevHidden(true);
+    }
+    if (startSlice >= ticketElementList.length - 10) {
+      setNextHidden(false);
     }
       setStartSlice(startSlice - 6);
       setEndSlice(endSlice - 6);
@@ -40,12 +49,13 @@ export default function TicketList( {ticketList, hideFunction} ) {
 
 
   return (
-    <div>
-      {/* <button id={'next-button'}onClick={() => nextPage()}>next page</button>
-      <button id={'prev-button'} hidden onClick={() => prevPage()}>previous page</button> */}
+    <div className={'ticket-list'}>
+      <div className={'next-prev-div'}>
+        <button className={'next-prev-buttons'} hidden={nextHidden} onClick={() => nextPage()}>next page</button>
+        <button className={'next-prev-buttons'} hidden={prevHidden} onClick={() => prevPage()}>previous page</button>
+      </div>
       <ul>
-        {/* {ticketElementList.slice(startSlice, endSlice)} */}
-        {ticketElementList}
+        {ticketElementList.slice(startSlice, endSlice)}
       </ul>
     </div>
   );

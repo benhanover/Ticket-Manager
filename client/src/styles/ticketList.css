@@ -1,0 +1,14 @@
+.ticket-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.next-prev-div {
+  display: flex;
+}
+
+.next-prev-buttons {
+  margin: 5px;
+  font-size: 1.5rem;
+}

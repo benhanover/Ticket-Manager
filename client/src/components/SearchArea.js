@@ -49,12 +49,20 @@ export default function SearchArea() {
 
   return (
     <>
-    <div className={'search-container'}>
-      <h1 className={'search-title'}>Look for a ticket</h1>
-      <input className={'search-input'} placeholder={'Look for a ticket :)'} onChange={filterTicketList} id={'searchInput'} />
+    <div className={'div-title'}>
+      <h1 className={'search-title'}>Tickets Manager</h1>
     </div>
-    <p id={'hideTicketsCounter'}>{hideCounter}</p>
-    <button id={'restoreHideTickets'} onClick={restoreHidden}>restore</button>
+    <div className={'search-container'}>
+      <input className={'search-input'} placeholder={'Search a ticket :)'} onChange={filterTicketList} id={'searchInput'} />
+      <div className={'showing-and-restore-area'}>
+        <span className={'count-span'}>Showing {ticketList.filter(ticket => ticket.hidden === false).length} results</span>
+        <div className={'restore-area'}>
+          <span className={'count-span'}>hidden tickets: </span>
+          <span id={'hideTicketsCounter'} className={'count-span'} >{hideCounter}</span>
+          <button id={'restoreHideTickets'} className={'count-span'} onClick={restoreHidden}>restore</button>
+        </div>
+      </div>
+    </div>
     <TicketList ticketList={ticketList} hideFunction={hideTicket} />
     </>
   );
