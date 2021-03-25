@@ -1,14 +1,14 @@
 .div-title {
-  /* opacity: 50%; */
-  background-color: rgba(117, 110, 221, 0.493);
+  background-color:  rgba(126, 124, 221, 0.664);
   height:fit-content;
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1;
 } 
 
 .search-title{
-  font-size: 3rem;
+  font-size: 4rem;
   text-align: center;
 }
 .search-container {
@@ -18,8 +18,13 @@
   align-items: center;
 }
 .search-input {
-  font-size: 2rem;
+  font-size: 3rem;
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.637);
+  border-radius: 2rem;
+}
+.search-input::placeholder {
+  color: black;
 }
 .showing-and-restore-area {
   display: flex;
@@ -37,6 +42,18 @@
 
 .count-span {
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: 600;
   margin: 6px;
 }
+
+#restoreHideTickets {
+  font-size: 1.7rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.589);
+}
+#restoreHideTickets:hover {
+  color: rgba(255, 255, 255, 0.637);
+  cursor: pointer;
+}
+

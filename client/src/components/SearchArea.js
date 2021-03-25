@@ -59,7 +59,7 @@ export default function SearchArea() {
         <div className={'restore-area'}>
           <span className={'count-span'}>hidden tickets: </span>
           <span id={'hideTicketsCounter'} className={'count-span'} >{hideCounter}</span>
-          <button id={'restoreHideTickets'} className={'count-span'} onClick={restoreHidden}>restore</button>
+          <span id={'restoreHideTickets'} className={'count-span button'} onClick={restoreHidden}>restore</span>
         </div>
       </div>
     </div>

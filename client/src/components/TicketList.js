@@ -11,7 +11,7 @@ export default function TicketList( {ticketList, hideFunction} ) {
 
   const ticketElementList = ticketList.map((ticket, index) => {
       return(
-      <li>
+      <li className={'ticket'}>
         <Ticket key={index} title={ticket.title} content={ticket.content} email={ticket.userEmail} done={ticket.done} creationTime={formatDate(ticket.creationTime)} labels={ticket.labels} hideFunction={hideFunction} />
       </li>
       );
@@ -51,10 +51,10 @@ export default function TicketList( {ticketList, hideFunction} ) {
   return (
     <div className={'ticket-list'}>
       <div className={'next-prev-div'}>
-        <button className={'next-prev-buttons'} hidden={nextHidden} onClick={() => nextPage()}>next page</button>
-        <button className={'next-prev-buttons'} hidden={prevHidden} onClick={() => prevPage()}>previous page</button>
+        <span className={'next-prev-buttons'} hidden={nextHidden} onClick={() => nextPage()}>next page</span>
+        <span className={'next-prev-buttons'} hidden={prevHidden} onClick={() => prevPage()}>previous page</span>
       </div>
-      <ul>
+      <ul className={'tickets-list'}>
         {ticketElementList.slice(startSlice, endSlice)}
       </ul>
     </div>
