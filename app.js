@@ -2,12 +2,11 @@ const express = require("express");
 const app = express();
 const Ticket = require('./ticket');
 
-// app.use(express.static("client/build"));
-app.use(express.static("client/public"));
+app.use(express.static("client/build"));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + 'index.html');
+  res.sendFile('index.html');
 });
 
 app.get("/api/tickets", (req, res) => {
