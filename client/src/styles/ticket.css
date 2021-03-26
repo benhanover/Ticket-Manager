@@ -4,11 +4,10 @@
   flex-direction: column;
   align-items: center;
   width: 70%;
-  height: 35vh;
+  height: 50vh;
   box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.527);
   border-radius: 1rem;
   list-style: none;
-  padding: 0.8rem;
   width: 40%; 
   margin-bottom: 2rem;
   background-color: rgb(126, 124, 221);
@@ -19,14 +18,17 @@
   padding-bottom: 15px;
   font-size: 1.5rem;
   width: 70%;
+  padding: 0.8rem;
 }
 
 .ticket-content {
   font-size: 1.3rem;
   overflow: auto;
   height: 60%;
-  padding: 10px;
+  padding: 0 1rem 1.5rem 1rem;
+  margin-bottom: 1rem;
 }
+
 .ticket-content::-webkit-scrollbar {
   display: none;
 }
@@ -37,6 +39,7 @@
 
 .ticket-creation-time {
   font-size: 1.2rem;
+  margin-left: 4px;
 }
 .hideTicketButton {
   position: absolute;
@@ -53,16 +56,15 @@
 }
 .email-date-div {
   display: flex;
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
+  width: fit-content;
+  padding-bottom: 1rem;
+  
 }
 .labels {
   display: flex;
-  position: absolute;
   font-size: 1.2rem;
-  bottom: 10px;
-  right: 3px;
+  width: fit-content;
+  padding-top: 1rem;
 }
 .label {
   border-radius: 0.5rem;
@@ -83,5 +85,18 @@
 }
 .ticket-labels {
   padding: 15px;
+}
+
+.ticket-footer {
+  background-color: rgb(199, 192, 192);
+  border-end-end-radius: 1rem;
+  border-end-start-radius: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+  align-items: center;
+  position:absolute;
+  bottom: 0;
 }
 

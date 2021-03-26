@@ -6,6 +6,7 @@
 
 .next-prev-div {
   display: flex;
+  padding-bottom: 30px;
 }
 
 .next-prev-buttons {

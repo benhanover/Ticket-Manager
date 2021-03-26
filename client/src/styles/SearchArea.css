@@ -26,6 +26,9 @@
 .search-input::placeholder {
   color: black;
 }
+input:focus{
+  outline: none;
+}
 .showing-and-restore-area {
   display: flex;
   flex-direction: column;
