@@ -45,7 +45,6 @@ export default function SearchArea() {
   }
 
   function restoreHidden() {
-
     setTicketList(restoredList);
     setTicketsShown(restoredList.length);
     setHideCounter(0);
@@ -63,7 +62,7 @@ export default function SearchArea() {
           <div className={'restore-area'}>
             <span className={'count-span'}>hidden tickets: </span>
             <span id={'hideTicketsCounter'} className={'count-span'} >{hideCounter}</span>
-            <span id={'restoreHideTickets'} className={'count-span button'} onClick={restoreHidden}>restore</span>
+            <span id={'restoreHideTickets'} className={'count-span button'} onClick={() => restoreHidden()}>restore</span>
           </div>
         </div>
       </div>

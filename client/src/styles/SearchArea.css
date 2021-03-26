@@ -50,6 +50,7 @@ input:focus{
 }
 
 #restoreHideTickets {
+  z-index: 2;
   font-size: 1.7rem;
   font-weight: bold;
   cursor: pointer;
